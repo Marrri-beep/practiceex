@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="myFunction()">
+    <p> Are you wearing your school ID? (yes/no) </p>
+    <p id="demo1"></p>
+    <p id="demo"></p>
+
+
+    <br>
+
+
+    <p> Are you either a student or senior citizen?</p>
+    <p id="demo3">  </p>
+    <p id="demo2"></p>
+
+
+    <br>
+
+
+    <p> Quiz Grade Evaluator </p>
+    <p id="demo4"></p>
+    <p id="demo5"></p>
+
+    <br>
+
+    <p> Data Promo Selector </p>
+    <p id="demo6"></p>
+    <p id="demo7"></p>
+
+    <br>
+
+    <p> Vowel Counter in Your Name </p>
+    <p id="demo8"></p>
+    <p id="demo9"></p>
+
+    <br> 
+
+    <p>  Username Validator </p>
+    <p id="demo10"></p>
+    <p id="demo11"></p>
+
+        <br> 
+
+    <p> Secure Login System </p>
+    <p id="demo12"></p>
+    <p id="demo13"></p>
+
+
+
+    <script>
+        function myFunction() {
+            //1
+            let ans = prompt("Are you wearing your school ID? (yes/no)");
+            let res = ans.toLowerCase();
+             document.getElementById("demo1").innerHTML = res;
+            if (res == "yes") {
+                document.getElementById("demo").innerHTML = "Welcome to the event!";
+            }
+            else {
+                document.getElementById("demo").innerHTML = "Please show your ID.";
+             }
+
+
+            //2
+            let stu = prompt("Are you a student? (yes/no)");
+            let sen = prompt("Are you a senior citizen? (yes/no)");
+            let stur =  stu.toLowerCase();
+            let senr = sen.toLowerCase();
+            if (stur == "yes" || senr == "yes") {
+            document.getElementById("demo3").innerHTML = "yes";
+            document.getElementById("demo2").innerHTML = "You get a discounted fare!";
+            }
+            else {
+            document.getElementById("demo3").innerHTML = "no";
+            document.getElementById("demo2").innerHTML = "You will pay the regular fare.";}
+
+
+            //3
+            let sco = prompt("Input your quiz score (0-100):");
+            document.getElementById("demo4").innerHTML = sco;
+            if (sco >= 90 && sco <= 100) {
+            document.getElementById("demo5").innerHTML = "Excellent!"; }
+            else if (sco >= 75 && sco < 90) {
+            document.getElementById("demo5").innerHTML = "Good Job!"; }
+            else if (sco >= 60 && sco < 75) {
+            document.getElementById("demo5").innerHTML = " You passed!";
+            }
+            else if (sco >= 0 && sco < 60) {
+            document.getElementById("demo5").innerHTML = "You need to review!";
+            }
+            else {
+            document.getElementById("demo5").innerHTML = "Invalid score!";
+            }
+
+
+            //4
+            let data = prompt(" A telecom company offers these data promos: A → 1GB for 1 day, B → 5GB for 7 days, C → 10GB for 30 days. Which do you choose? (A/B/C)");
+            let dat = data.toUpperCase();
+            switch(dat) {
+            case "A":
+            document.getElementById("demo6").innerHTML = "A";
+            document.getElementById("demo7").innerHTML = "1GB for 1 day";
+            break;
+            case "B":
+            document.getElementById("demo6").innerHTML = "B";
+            document.getElementById("demo7").innerHTML = "5GB for 7 days";
+            break;
+            case "C":
+            document.getElementById("demo6").innerHTML = "C";
+            document.getElementById("demo7").innerHTML = "10GB for 30 days";
+            break;
+            default:
+            document.getElementById("demo6").innerHTML = "Invalid choice";
+            }
+
+
+            //5
+            let fname = prompt("Enter your full name:");
+            document.getElementById("demo8").innerHTML = fname;
+            let name = fname.toLowerCase();
+            let count = 0;
+            for (let i = 0; i < name.length; i++) {
+                if (name[i] === 'a' || name[i] === 'e' || name[i] === 'i' || name[i] === 'o' || name    [i] === 'u') {
+                    count++;
+                }
+            }
+            document.getElementById("demo9").innerHTML = "Your name contains " + count + " vowels.";
+
+
+            //6
+            let user = prompt("Create a username! (must be at least 6 characters long and contain no spaces):");
+            document.getElementById("demo10").innerHTML = user;
+            let hasSpace = false;
+            for (let i = 0; i < user.length; i++) {
+                if (user[i] === " ") {
+                    hasSpace = true;
+                    break;
+                }
+            }
+            if (user.length < 6) {
+                document.getElementById("demo11").innerHTML = "Username must be at least 6 characters.";
+            } else if (hasSpace) {
+                document.getElementById("demo11").innerHTML = "Username must not contain spaces.";
+            } else {
+                document.getElementById("demo11").innerHTML = "Valid username.";
+            }
+
+            //7
+            let att = 0;
+            let log = "";
+            while (att < 3) {
+                let pass = prompt("Enter password:");
+                document.getElementById("demo12").innerHTML = pass;
+                if (pass == "Grade9JS") {
+                    log = "Login successful.";
+                document.getElementById("demo13").innerHTML = log;
+                    break;
+                } else {
+                    att++;
+                    if (att === 3) {
+                        log = "Account locked.";
+                    document.getElementById("demo13").innerHTML = log;
+                    } else {
+                        alert("Incorrect password. Try again.");
+                    }
+                }
+            }
+        }
+    </script>
+   
+</body>
+</html>
